@@ -1,0 +1,108 @@
+.bg-video-full {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  animation: slowZoom 20s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(7,14,10,0.3) 0%, rgba(7,14,10,0.85) 100%);
+  z-index: 1;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 40px;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: color 0.4s var(--ease-out-expo);
+}
+
+.sweep-btn {
+  background-color: transparent;
+  color: var(--bg-dark);
+  border: 1px solid var(--accent-gold);
+}
+
+.sweep-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--accent-gold);
+  z-index: -1;
+  transition: transform 0.6s var(--ease-out-expo);
+  transform-origin: right;
+}
+
+.sweep-btn:hover {
+  color: var(--accent-gold);
+}
+
+.sweep-btn:hover::before {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.outline-sweep-btn {
+  color: var(--text-main);
+  border: 1px solid var(--line);
+}
+
+.outline-sweep-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--text-main);
+  z-index: -1;
+  transform: scaleX(0);
+  transition: transform 0.6s var(--ease-out-expo);
+  transform-origin: left;
+}
+
+.outline-sweep-btn:hover {
+  color: var(--bg-dark);
+}
+
+.outline-sweep-btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+.hero-fullscreen {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 150px 5% 0 5%;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

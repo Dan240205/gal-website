@@ -1,0 +1,117 @@
+.horizontal-scroll-track {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 40px 5%;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.horizontal-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll-track:active {
+  cursor: grabbing;
+}
+
+.snap-item {
+  scroll-snap-align: center;
+  flex: 0 0 85%;
+  max-width: 420px;
+}
+
+.service-card {
+  height: auto;
+  flex-direction: column;
+  height: auto;
+  margin-top: 0 !important;
+
+}
+
+.gallery-track {
+  padding-bottom: 80px;
+}
+
+.gallery-item {
+  flex: 0 0 85%;
+  max-width: 500px;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 8px;
+
+  transition: filter 0.5s ease, transform 0.5s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.gallery-item:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .horizontal-scroll-track {
+
+    padding: 40px calc((100% - min(1120px, calc(100% - 40px))) / 2);
+    gap: 40px;
+  }
+
+  .snap-item {
+    flex: 0 0 40%;
+  }
+
+  .gallery-item {
+    flex: 0 0 45%;
+  }
+}
+
+.contact-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--bg-panel);
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--text-main);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.contact-line:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-line span {
+  color: var(--text-muted);
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+}
+
+.contact-line:hover {
+  color: var(--accent-gold);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.flex-footer {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}

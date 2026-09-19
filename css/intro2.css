@@ -1,0 +1,140 @@
+#signature-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: radial-gradient(circle at center, #163e2b 0%, #0b1f15 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+    }
+
+    .signature-container {
+      position: relative;
+      display: inline-block;
+      padding: 0 40px;
+    }
+
+    .calligraphy-name {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: #fffdf7;
+      white-space: nowrap;
+      line-height: 1.2;
+      display: block;
+
+
+      clip-path: polygon(-20% 0, 0% 0, -20% 100%, -40% 100%);
+      animation: writeInk 2.8s cubic-bezier(0.3, 0.1, 0.3, 1) forwards;
+      animation-delay: 0.4s;
+    }
+
+    .ink-tip {
+      position: absolute;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      background-color: #d8c88c;
+      border-radius: 50%;
+      opacity: 0;
+      filter: drop-shadow(0 0 5px #d8c88c);
+
+      animation: travelPen 2.8s cubic-bezier(0.3, 0.1, 0.3, 1) forwards;
+      animation-delay: 0.4s;
+      pointer-events: none;
+    }
+
+    .signature-tagline {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #fffdf7;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    #signature-loader.tagline-show .signature-tagline {
+      opacity: 0.5;
+      transform: translateY(0);
+    }
+
+
+    @keyframes writeInk {
+      0% {
+        clip-path: polygon(-20% 0, 0% 0, -20% 100%, -40% 100%);
+      }
+      100% {
+        clip-path: polygon(-20% 0, 120% 0, 100% 100%, -40% 100%);
+      }
+    }
+
+    @keyframes travelPen {
+      0% {
+        left: 0%;
+        top: 65%;
+        opacity: 0;
+      }
+      3% {
+        opacity: 1;
+      }
+      12% { top: 25%; }
+      24% { top: 75%; }
+      36% { top: 20%; }
+      48% { top: 70%; }
+      60% { top: 30%; }
+      72% { top: 75%; }
+      84% { top: 15%; }
+      96% { top: 60%; left: 98%; opacity: 1; }
+      100% {
+        left: 100%;
+        top: 45%;
+        opacity: 0;
+      }
+    }
+
+    .bg-video {
+      opacity: 0 !important;
+      transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    body.page-ready .bg-video {
+      opacity: 0.4 !important;
+    }
+
+    .content_layer > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.page-ready .content_layer .header_text { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+    body.page-ready .content_layer .title_1 { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+    body.page-ready .content_layer .intro_text { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+    body.page-ready .content_layer .button-row { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-parent .reveal:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-parent .reveal:nth-child(2) { transition-delay: 0.15s; }
+    .stagger-parent .reveal:nth-child(3) { transition-delay: 0.25s; }
